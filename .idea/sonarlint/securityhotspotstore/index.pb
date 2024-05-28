@@ -20,3 +20,9 @@ U
 mvnw,5\d\5d837c4ed85ecaaf932c506e80ff5d7b9f3d590d
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+i
+9src/main/java/pl/edu/education_project/PublicService.java,9\3\9315616b63cc602361249217e6fd2b11819cd7f1
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
