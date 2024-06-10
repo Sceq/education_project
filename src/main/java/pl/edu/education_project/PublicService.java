@@ -127,4 +127,34 @@ public class PublicService {
 
    //Postaram się tutaj wrzucać najpierw w postaci komentarza zadanie, a następnie je pod komentarzem rozwiązywać.
    //Dodatkowo w planach jest dodanie klas testowych z asercjami. Obecnie testy robią się na codeWarsach.
+
+//// Zadanie deadfish.
+//   Write a simple parser that will parse and run Deadfish.
+//
+//   Deadfish has 4 commands, each 1 character long:
+//
+//   i increments the value (initially 0)
+//   d decrements the value
+//   s squares the value
+//   o outputs the value into the return array
+//   Invalid characters should be ignored.
+//
+//     Deadfish.parse("iiisdoso") =- new int[] {8, 64};
+   public static int[] parse(String data) {
+      int value = 0;
+      char[] chars = data.toCharArray();
+      int[] result = new int[]{};
+      for (char aChar : chars) {
+         if (aChar == 'i') {
+            value++;
+         } else if (aChar == 'd') {
+            value--;
+         } else if (aChar == 's') {
+            value = value * value;
+         } else if (aChar == 'o') {
+            result = Arrays.copyOf(result, result.length + 1);
+            result[result.length - 1] = value;
+         }
+      }     return result;
+   }
 }
