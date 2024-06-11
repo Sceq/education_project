@@ -5,6 +5,7 @@ import static java.util.Arrays.stream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 import lombok.NoArgsConstructor;
 
@@ -32,23 +33,20 @@ public class PublicService {
    public static boolean betterThanAverage(int[] classPoints, int yourPoints) {
       int sum = 0;
       for (int classPoint : classPoints) {
-         sum +=classPoint;
+         sum += classPoint;
       }
       return sum / classPoints.length < yourPoints;
    }
 
-   public static int opposite(int number)
-   {
+   public static int opposite(int number) {
       return -number;
    }
 
-   public static List<Object> otherFunction(final List<Object> list)
-   {
+   public static List<Object> otherFunction(final List<Object> list) {
       return list.stream().filter(l -> l instanceof Integer).collect(Collectors.toList());
    }
 
-   public static boolean functionForWords(String word)
-   {
+   public static boolean functionForWords(String word) {
       List<String> listOfDigits = firstLoop(word);
       for (int i = 0; i < listOfDigits.size(); i++) {
          if (!listOfDigits.get(i).equals(listOfDigits.get(listOfDigits.size() - 1 - i))) {
@@ -60,15 +58,13 @@ public class PublicService {
 
    private static List<String> firstLoop(String word) {
       List<String> listOfDigits = new ArrayList<>();
-      for(int i = 0; i < word.length(); i++)
-      {
+      for (int i = 0; i < word.length(); i++) {
          listOfDigits.add(String.valueOf(word.charAt(i)));
       }
       return listOfDigits;
    }
 
-   public static int[] functionForTraining(long n)
-   {
+   public static int[] functionForTraining(long n) {
       int myInt = (int) n;
       String myString = Integer.toString(myInt);
       int[] myArray = new int[myString.length()];
@@ -82,7 +78,7 @@ public class PublicService {
       return str.length() == str.toLowerCase().chars().distinct().count();
    }
 
-   public static boolean getXO (String str) {
+   public static boolean getXO(String str) {
       return str.replaceAll("[^xX]", "").length() == str.replaceAll("[^oO]", "").length();
    }
 
@@ -97,7 +93,7 @@ public class PublicService {
       oCount = (int) str.toLowerCase()
         .chars()
         .filter(c -> c == o.charAt(0)).count();
-      return  xCount == oCount;
+      return xCount == oCount;
    }
 
    //dużo wydajniejsze rozwiązanie niż powyższe. Nie operujemy na stringach, a na tablicach znaków.
@@ -128,7 +124,7 @@ public class PublicService {
    //Postaram się tutaj wrzucać najpierw w postaci komentarza zadanie, a następnie je pod komentarzem rozwiązywać.
    //Dodatkowo w planach jest dodanie klas testowych z asercjami. Obecnie testy robią się na codeWarsach.
 
-//// Zadanie deadfish.
+   //// Zadanie deadfish.
 //   Write a simple parser that will parse and run Deadfish.
 //
 //   Deadfish has 4 commands, each 1 character long:
@@ -155,6 +151,32 @@ public class PublicService {
             result = Arrays.copyOf(result, result.length + 1);
             result[result.length - 1] = value;
          }
-      }     return result;
+      }
+      return result;
    }
+
+   //Zadanie: Find The Parity Outlier
+
+//   You are given an array (which will have a length of at least 3, but could be very large) containing integers.
+//   The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N.
+//   Write a method that takes the array as an argument and returns this "outlier" N.
+
+   static int find(int[] integers) {
+      if (integers.length < 4) {
+         if (stream(integers).filter(i -> i % 2 == 0).count() < 2) {
+            return stream(integers).filter(i -> i % 2 == 0).findFirst().getAsInt();
+         } else {
+            return stream(integers).filter(i -> i % 2 != 0).findFirst().getAsInt();
+         }
+      } else {
+         if (stream(integers).filter(i -> i % 2 == 0).count() > 1) {
+            return stream(integers).filter(i -> i % 2 != 0).findFirst().getAsInt();
+         } else {
+            return stream(integers).filter(i -> i % 2 == 0).findFirst().getAsInt();
+         }
+      }
+   }
+   // Rozwiązanie jest całkiem dobre, bo działa :D, ale w praktyce można by było to zrobić lepiej.
+   // Warto zwrócić uwagę na to, że w przypadku, gdyby było więcej niż 3 elementy, to można by było zrobić to w jednym strumieniu.
+
 }
