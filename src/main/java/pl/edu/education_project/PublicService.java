@@ -222,4 +222,31 @@ public class PublicService {
    }
 
    //chyba najprostsze co się trafiło xD
+
+
+
+   public static String battle(String goodAmounts, String evilAmounts) {
+      String goodWins = "Battle Result: Good triumphs over Evil";
+      String evilWins = "Battle Result: Evil eradicates all trace of Good";
+      String draw = "Battle Result: No victor on this battle field";
+
+      int[] good = Arrays.stream(goodAmounts.split(" ")).mapToInt(Integer::parseInt).toArray();
+      int[] evil = Arrays.stream(evilAmounts.split(" ")).mapToInt(Integer::parseInt).toArray();
+
+      int goodPower = 1 * good[0] + 2 * good[1] + 3 * good[2] + 3 * good[3] + 4 * good[4] + 10 * good[5];
+      int evilPower = 1 * evil[0] + 2 * evil[1] + 2 * evil[2] + 2 * evil[3] + 3 * evil[4] + 5 * evil[5] + 10 * evil[6];
+
+      if (goodPower > evilPower) {
+         return goodWins;
+      } else if (goodPower < evilPower) {
+         return evilWins;
+      } else {
+         return draw;
+      }
+   }
+
+   public boolean check(String sentence){
+      return sentence.toLowerCase().chars().filter(Character::isAlphabetic).distinct().count() == 26;
+    }
+
 }
