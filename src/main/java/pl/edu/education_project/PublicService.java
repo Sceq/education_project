@@ -5,6 +5,7 @@ import static java.util.Arrays.stream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 import lombok.NoArgsConstructor;
 
@@ -230,8 +231,8 @@ public class PublicService {
       String evilWins = "Battle Result: Evil eradicates all trace of Good";
       String draw = "Battle Result: No victor on this battle field";
 
-      int[] good = Arrays.stream(goodAmounts.split(" ")).mapToInt(Integer::parseInt).toArray();
-      int[] evil = Arrays.stream(evilAmounts.split(" ")).mapToInt(Integer::parseInt).toArray();
+      int[] good = stream(goodAmounts.split(" ")).mapToInt(Integer::parseInt).toArray();
+      int[] evil = stream(evilAmounts.split(" ")).mapToInt(Integer::parseInt).toArray();
 
       int goodPower = 1 * good[0] + 2 * good[1] + 3 * good[2] + 3 * good[3] + 4 * good[4] + 10 * good[5];
       int evilPower = 1 * evil[0] + 2 * evil[1] + 2 * evil[2] + 2 * evil[3] + 3 * evil[4] + 5 * evil[5] + 10 * evil[6];
@@ -249,4 +250,91 @@ public class PublicService {
       return sentence.toLowerCase().chars().filter(Character::isAlphabetic).distinct().count() == 26;
     }
 
+   public static int[] snail(int[][] array) {
+      ArrayList<Integer[]> listOfArrays = new ArrayList<>();
+
+      // 1. [[]] - wynik puste.
+      /*2. [0,0] [0,1]
+           [1,0] [1,1]
+
+*/
+      /*3.
+           [0,0] [0,1] [0,2]
+           [1,0] [1,1] [1,2]
+           [2,0] [2,1] [2,2]
+      */
+      /*
+           [0,0] [0,1] [0,2] [0,3]
+           [1,0] [1,1] [1,2] [1,3]
+           [2,0] [2,1] [2,2] [2,3]
+           [3,0] [3,1] [3,2] [3,3]
+           x = 8
+           pierwsza tablica wszystkie elementy.
+           druga tablica ostatni element
+           trzecia tablica ostatni element
+           czwarta tablica wszystkie elementy reverse.
+           trzecia tablica pierwszy element
+           druga tablica od pierwszego do ostatniego, bez ostatniego.
+           trzecia tablica przedostatni element i następny, bez pierwszego.
+
+           [0,0] [0,1] [0,2] [0,3] [0,4]
+           [1,0] [1,1] [1,2] [1,3] [1,4]
+           [2,0] [2,1] [2,2] [2,3] [2,4]
+           [3,0] [3,1] [3,2] [3,3] [3,4]
+           [4,0] [4,1] [4,2] [4,3] [4,4]
+
+           pierwsza tablica wszystkie elementy.
+           druga tablica ostatni element
+           trzecia tablica ostatni element
+           czwarta tablica ostatni element
+           piąta tablica wszystkie elementy reverse.
+           czwarta tablica pierwszy element
+           trzecia tablica pierwszy element
+           druga tablica od pierwszego do ostatniego, bez ostatniego.
+           trzecia tablica przedostatni element i następny, bez pierwszego. /// to nie zadziała w ten sposób
+
+           dla każdej tablicy rób tak:
+          tablice typu row i tablice typu columns:
+          rowTables = tylko wiersze
+          columnTables = tylko kolumny. posortuj odwrotnie
+          usedrowTabels = 1
+          usedcolumTabel = 1
+          for(int b= 0; allArrays.lenght(); i++)
+          {
+          1.
+            for(int i = 0; i <= rowTabels.lenght(); i++) {
+                         if(i nieparzyste){
+
+               rowTabels[rowTabels.lastIndex() -usedrowTabels].sortedReverse();
+               columnTabel[columnTabel.firstIndex() - usedcolumTabel].sortedRevers();
+               }
+             rezultat.add(rowTabel[i]);
+               rezultat.remove(rowTabel[].lastindex());
+               rezultat.add(columntTabel[i];
+               rezultat.remove(columnTabel[i].lastindex());
+               countRowTabels--
+               countColumnTabel--
+
+
+              }
+  {1,2,3}
+  {4,5,6}
+  {7,8,9}
+
+  6 tablic
+4 rowTabel:
+  {1,2,3,4} 1,2,3,4,8,12,16,15,14,13,9,5
+  {5,6,7,8}
+  {9,10,11,12}
+  {13,14,15,16} tera na odwrót
+
+4 columnTabel reverse:
+  {4,8,12,16}
+  {3,7,11,15}
+  {2,6,10,14}
+  {1,5,9,13}
+  tera na odwrót
+*/
+
+   }
 }

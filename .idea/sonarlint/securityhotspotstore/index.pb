@@ -28,3 +28,5 @@ S
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+k
+;src/main/java/pl/edu/education_project/IntArrayWrapper.java,4\2\4273ad5f69c67fc686490de5431cb143196d8d5e
